@@ -1,5 +1,3 @@
-
-
 public class Resume(string name) {
 
     public string Name { get; private set; } = name;
