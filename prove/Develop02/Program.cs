@@ -11,12 +11,12 @@ class Program {
     static void MainMenu() {
         Console.WriteLine("Please select one of the following options");
 
-        Dictionary<string, Action> options = new(){{"1. Write", Write}, {"2. Display", Display}, {"3. Load", Load}, {"4. Save", Save}, {"5. Exit", Exit}};
+        Dictionary<string, Action> options = new() {{"1. Write", Write}, {"2. Display", Display}, {"3. Load", Load}, {"4. Save", Save}, {"5. Exit", Exit}};
         foreach (KeyValuePair<string, Action> pair in options) {
             Console.WriteLine(pair.Key);
         }
 
-        int index = ConsoleUtils.PromptInput<int>("What would you like to do? ", (i) => i > 0 && i <= options.Count(), "Out of bound option index! Please try again.");
+        int index = ConsoleUtils.PromptInput<int>("What would you like to do? ", (i) => i > 0 && i <= options.Count, "Out of bound option index! Please try again.");
         Action selection = options.ElementAt(index - 1).Value;
 
         Console.WriteLine();
@@ -35,12 +35,12 @@ class Program {
             "If I had one thing I could do over today, what would it be?",
             "What made me smile today?",
             "What am I looking forward to this week?",
-            "What’s something I’m grateful for right now?",
-            "What’s one small win I had today?",
+            "What's something I'm grateful for right now?",
+            "What's one small win I had today?",
             "How am I feeling, and why?",
             "What's one thing I love about myself?",
             "Who or what inspires me lately?",
-            "What’s something new I’ve learned recently?",
+            "What's something new I've learned recently?",
             "What's something I want to let go of?",
             "What would I say to my past self?"
         ];
