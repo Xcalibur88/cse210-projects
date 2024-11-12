@@ -1,4 +1,4 @@
-public class Fraction {
+class Fraction {
 
     public int Top { get; private set; }
     public int Bottom { get; private set; }
