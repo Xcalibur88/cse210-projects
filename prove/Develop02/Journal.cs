@@ -17,7 +17,7 @@ public class Journal {
 
     public static Journal Load(string fileName) {
         string jsonString = File.ReadAllText(fileName);
-        return JsonSerializer.Deserialize<Journal>(jsonString);;
+        return JsonSerializer.Deserialize<Journal>(jsonString);
     }
 
 }

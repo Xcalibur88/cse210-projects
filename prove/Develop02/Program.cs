@@ -5,25 +5,8 @@ class Program {
 
     static Journal Journal = new();
     static void Main(string[] args) {
-        MainMenu();
-    }
-
-    static void MainMenu() {
-        Console.WriteLine("Please select one of the following options");
-
-        Dictionary<string, Action> options = new() {{"1. Write", Write}, {"2. Display", Display}, {"3. Load", Load}, {"4. Save", Save}, {"5. Exit", Exit}};
-        foreach (KeyValuePair<string, Action> pair in options) {
-            Console.WriteLine(pair.Key);
-        }
-
-        int index = ConsoleUtils.PromptInput<int>("What would you like to do? ", (i) => i > 0 && i <= options.Count, "Out of bound option index! Please try again.");
-        Action selection = options.ElementAt(index - 1).Value;
-
-        Console.WriteLine();
-        selection();
-        Console.WriteLine();
-
-        MainMenu();
+        Menu mainMenu = new(("Write", Write), ("Display", Display), ("Load", Load), ("Save", Save), ("Exit", Exit));
+        mainMenu.Open(true);
     }
 
     static void Write() {

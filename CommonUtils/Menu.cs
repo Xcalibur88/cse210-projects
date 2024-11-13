@@ -15,14 +15,7 @@ public class Menu {
         }
     }
 
-    public Menu(params (string, Action)[] options) {
-        this.options = [];
-        int index = 1;
-        foreach (var (key, action) in options) {
-            this.options[index + ". " + key] = action;
-            index++;
-        }
-    }
+    public Menu(params (string, Action)[] options) : this(false, options) {}
 
     public void Open(bool rePrompt) {
         Space();
@@ -54,5 +47,4 @@ public class Menu {
             Console.WriteLine();
         }
     }
-
 }
