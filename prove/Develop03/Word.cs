@@ -21,5 +21,4 @@ public class Word(string text) {
         }
         return Text;
     }
-
 }

@@ -8,12 +8,12 @@ public class Reference(string book, int chapter, int startVerse, int verseRange)
     [JsonInclude]
     private readonly int chapter = chapter;
     [JsonInclude]
-    public int StartVerse { get; private set; } = startVerse;
+    private readonly int startVerse = startVerse;
     [JsonInclude]
     private readonly int verseRange = Math.Max(0, verseRange);
 
     public int EndVerse() {
-        return StartVerse + verseRange;
+        return startVerse + verseRange;
     }
 
     public bool IsMultiVerse() {
@@ -21,8 +21,7 @@ public class Reference(string book, int chapter, int startVerse, int verseRange)
     }
 
     public override string ToString() {
-        return  book + " " + chapter + ":" + (verseRange > 0 ? StartVerse + "-" + EndVerse() : StartVerse);
+        return  book + " " + chapter + ":" + (verseRange > 0 ? startVerse + "-" + EndVerse() : startVerse);
     }
-
     
 }

@@ -10,7 +10,7 @@ class Program {
 
     static void Main(string[] args) {
         LoadSciptures();
-        Menu mainMenu = new(true, ("Memorize", Memorize), ("List", ListScriptures), ("Add", AddScripture), ("Exit", Exit));
+        Menu mainMenu = new(true, ("Memorize Random", MemorizeRandom), ("Select Memorize", MemorizesSelect), ("List", ListScriptures), ("Add", AddScripture), ("Exit", Exit));
         mainMenu.Open();
         SaveScriptures();
     }
@@ -28,9 +28,7 @@ class Program {
         File.WriteAllText(fileName, jsonString);
     }
 
-    static void Memorize() {
-        Scripture scripture = scriptures[new Random().Next(scriptures.Count)];
-
+    static void Memorize(Scripture scripture) {
         bool quit = false;
         while(!quit) {
             Console.Clear();
@@ -40,6 +38,19 @@ class Program {
             scripture.HideWords(3);
         }
         scripture.UnHideAll();
+    }
+
+    static void MemorizeRandom() {
+        Memorize(scriptures[new Random().Next(scriptures.Count)]);
+    }
+
+    static void MemorizesSelect() {
+        List<(string, Action)> options = [];
+        foreach(Scripture scripture in scriptures) {
+            options.Add((scripture.GetRenderedReference(), () => Memorize(scripture)));
+        }
+        Menu scriptureOptionsMenu = new(true, [.. options]);
+        scriptureOptionsMenu.Open(false);
     }
 
     static void ListScriptures() {
@@ -65,7 +76,6 @@ class Program {
 
         Reference reference = new(book, chapter, verses.First().Key, verses.Count - 1);
         Scripture scripture = new(reference, verses);
-        
         scriptures.Add(scripture);
         SaveScriptures();
     }

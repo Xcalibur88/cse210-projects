@@ -30,8 +30,12 @@ public class Scripture(Reference reference, Dictionary<int, List<Word>> verses) 
         return verses.All(verse => verse.Value.All(word => word.Hidden));   
     }
 
+    public string GetRenderedReference() {
+        return reference.ToString();
+    }
+
     public string GetRenderedScripture() {
-        var text = new StringBuilder(Colors.Bright + reference.ToString() + Colors.Reset);
+        var text = new StringBuilder(Colors.Bright + GetRenderedReference() + Colors.Reset);
         if (reference.IsMultiVerse()) {
             text.Append('\n');
         }
@@ -48,5 +52,4 @@ public class Scripture(Reference reference, Dictionary<int, List<Word>> verses) 
         }
         return text.ToString();
     }
-
 }
