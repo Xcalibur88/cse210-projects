@@ -9,17 +9,20 @@ public class Scripture(Reference reference, Dictionary<int, List<Word>> verses) 
     private readonly Dictionary<int, List<Word>> verses = verses;
 
     public void HideWords(int wordCount) {
+        List<Word> words = verses.SelectMany(verse => verse.Value).ToList();
         Random r = new();
-        for (int i = 0; i < wordCount; i++) {
-            List<Word> words = verses.ElementAt(r.Next(verses.Count)).Value;
-            
-            Word word;
-            int attempts = 0;
+        Word word;
+        for (int i = 0; i < wordCount && !IsAllHidden(); i++) {
             do {
                 word = words[r.Next(words.Count)];
-                attempts++;
-            } while (word.Hidden && attempts < words.Count);
-            word.Hidden = true;
+            } while (word.Hidden);
+            word.Hide();
+        }
+    }
+
+    public void UnHideAll() {
+        foreach(var word in verses.Values.SelectMany(words => words)) {
+            word.UnHide();
         }
     }
 
@@ -28,7 +31,7 @@ public class Scripture(Reference reference, Dictionary<int, List<Word>> verses) 
     }
 
     public string GetRenderedScripture() {
-        var text = new StringBuilder(reference.ToString());
+        var text = new StringBuilder(Colors.Bright + reference.ToString() + Colors.Reset);
         if (reference.IsMultiVerse()) {
             text.Append('\n');
         }
@@ -39,7 +42,7 @@ public class Scripture(Reference reference, Dictionary<int, List<Word>> verses) 
             foreach (Word word in verse.Value) {
                 text.Append(' ').Append(word.GetRenderedText());
             }
-            if (reference.IsMultiVerse()) {
+            if (reference.IsMultiVerse() && verse.Key != verses.Last().Key) {
                 text.Append('\n');
             }
         }

@@ -5,7 +5,15 @@ public class Word(string text) {
 
     public string Text { get; private set; } = text;
     [JsonIgnore]
-    public bool Hidden { get; set; } = false;
+    public bool Hidden { get; private set; }= false;
+
+    public void Hide() {
+        Hidden = true;
+    }
+
+    public void UnHide() {
+        Hidden = false;
+    }
 
     public string GetRenderedText() {
         if (Hidden) {

@@ -228,5 +228,319 @@
         }
       ]
     }
+  },
+  {
+    "reference": {
+      "StartVerse": 3,
+      "book": "Psalm",
+      "chapter": 24,
+      "verseRange": 1
+    },
+    "verses": {
+      "3": [
+        {
+          "Text": "Who"
+        },
+        {
+          "Text": "shall"
+        },
+        {
+          "Text": "ascend"
+        },
+        {
+          "Text": "into"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "hill"
+        },
+        {
+          "Text": "of"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "Lord?"
+        },
+        {
+          "Text": "or"
+        },
+        {
+          "Text": "who"
+        },
+        {
+          "Text": "shall"
+        },
+        {
+          "Text": "stand"
+        },
+        {
+          "Text": "in"
+        },
+        {
+          "Text": "his"
+        },
+        {
+          "Text": "holy"
+        },
+        {
+          "Text": "place?"
+        }
+      ],
+      "4": [
+        {
+          "Text": "He"
+        },
+        {
+          "Text": "that"
+        },
+        {
+          "Text": "hath"
+        },
+        {
+          "Text": "clean"
+        },
+        {
+          "Text": "hands,"
+        },
+        {
+          "Text": "and"
+        },
+        {
+          "Text": "a"
+        },
+        {
+          "Text": "pure"
+        },
+        {
+          "Text": "heart;"
+        },
+        {
+          "Text": "who"
+        },
+        {
+          "Text": "hath"
+        },
+        {
+          "Text": "not"
+        },
+        {
+          "Text": "lifted"
+        },
+        {
+          "Text": "up"
+        },
+        {
+          "Text": "his"
+        },
+        {
+          "Text": "soul"
+        },
+        {
+          "Text": "unto"
+        },
+        {
+          "Text": "vanity,"
+        },
+        {
+          "Text": "nor"
+        },
+        {
+          "Text": "sworn"
+        },
+        {
+          "Text": "deceitfully."
+        }
+      ]
+    }
+  },
+  {
+    "reference": {
+      "StartVerse": 15,
+      "book": "Joshua",
+      "chapter": 24,
+      "verseRange": 0
+    },
+    "verses": {
+      "15": [
+        {
+          "Text": "And"
+        },
+        {
+          "Text": "if"
+        },
+        {
+          "Text": "it"
+        },
+        {
+          "Text": "seem"
+        },
+        {
+          "Text": "evil"
+        },
+        {
+          "Text": "unto"
+        },
+        {
+          "Text": "you"
+        },
+        {
+          "Text": "to"
+        },
+        {
+          "Text": "serve"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "Lord,"
+        },
+        {
+          "Text": "choose"
+        },
+        {
+          "Text": "you"
+        },
+        {
+          "Text": "this"
+        },
+        {
+          "Text": "day"
+        },
+        {
+          "Text": "whom"
+        },
+        {
+          "Text": "ye"
+        },
+        {
+          "Text": "will"
+        },
+        {
+          "Text": "serve;"
+        },
+        {
+          "Text": "whether"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "gods"
+        },
+        {
+          "Text": "which"
+        },
+        {
+          "Text": "your"
+        },
+        {
+          "Text": "fathers"
+        },
+        {
+          "Text": "served"
+        },
+        {
+          "Text": "that"
+        },
+        {
+          "Text": "were"
+        },
+        {
+          "Text": "on"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "other"
+        },
+        {
+          "Text": "side"
+        },
+        {
+          "Text": "of"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "flood,"
+        },
+        {
+          "Text": "or"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "gods"
+        },
+        {
+          "Text": "of"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "Amorites,"
+        },
+        {
+          "Text": "in"
+        },
+        {
+          "Text": "whose"
+        },
+        {
+          "Text": "land"
+        },
+        {
+          "Text": "ye"
+        },
+        {
+          "Text": "dwell:"
+        },
+        {
+          "Text": "but"
+        },
+        {
+          "Text": "as"
+        },
+        {
+          "Text": "for"
+        },
+        {
+          "Text": "me"
+        },
+        {
+          "Text": "and"
+        },
+        {
+          "Text": "my"
+        },
+        {
+          "Text": "house,"
+        },
+        {
+          "Text": "we"
+        },
+        {
+          "Text": "will"
+        },
+        {
+          "Text": "serve"
+        },
+        {
+          "Text": "the"
+        },
+        {
+          "Text": "Lord."
+        }
+      ]
+    }
   }
 ]

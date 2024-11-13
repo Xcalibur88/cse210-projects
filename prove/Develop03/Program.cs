@@ -5,12 +5,12 @@ using System.Text.Json;
 class Program {
 
     public static List<Scripture> scriptures = [];
-    public static readonly JsonSerializerOptions serializationOptions = new() { WriteIndented = true, IncludeFields = true };
     public static string fileName = "scriptures.json";
+    public static readonly JsonSerializerOptions serializationOptions = new() { WriteIndented = true, IncludeFields = true };
 
     static void Main(string[] args) {
         LoadSciptures();
-        Menu mainMenu = new(true, ("Memorize", Memorize), ("Add", Add), ("Exit", Exit));
+        Menu mainMenu = new(true, ("Memorize", Memorize), ("List", ListScriptures), ("Add", AddScripture), ("Exit", Exit));
         mainMenu.Open();
         SaveScriptures();
     }
@@ -35,27 +35,33 @@ class Program {
         while(!quit) {
             Console.Clear();
             Console.WriteLine(scripture.GetRenderedScripture());
+            Console.WriteLine();
             quit = ConsoleUtils.PromptInput<string, bool>("Press enter to continue or type 'quit' to finish: ", process: (ii) => ii.Equals("quit")) || scripture.IsAllHidden();
             scripture.HideWords(3);
         }
+        scripture.UnHideAll();
     }
 
-    static void Add() {
+    static void ListScriptures() {
+        foreach(Scripture scripture in scriptures) {
+            Console.WriteLine(scripture.GetRenderedScripture());
+            Console.WriteLine();
+        }
+        ConsoleUtils.PromptInput<string>("Press enter to continue...");
+    }
+
+    static void AddScripture() {
         string book = ConsoleUtils.PromptInput<string>("Book of scripture (ex. 1 Nephi): ");
         int chapter = ConsoleUtils.PromptInput<int>("Chapter: ");
 
-        bool next = false;
         Dictionary<int, List<Word>> verses = [];
         int verseNumber = ConsoleUtils.PromptInput<int>("Verse number: ");
+        string verse = ConsoleUtils.PromptInput<string>("Paste the verse: ");
         do {
-            string verse = ConsoleUtils.PromptInput<string>("Paste the verse: ");
-            verses[verseNumber] = verse.Split(" ").Select(text => new Word(text)).ToList();;
-
-            next = ConsoleUtils.PromptInput<string, bool>("Add another verse (y/n)?: ",
-                criteria: (i) => i.ToLower().Equals("y") || i.ToLower().Equals("n"),
-                process: (ii) => ii.Equals("y") || !ii.Equals("n"));
+            verses[verseNumber] = verse.Split(" ").Select(text => new Word(text)).ToList();
             verseNumber++;
-        } while(next);
+            verse = ConsoleUtils.PromptInput<string>("Paste the next verse or press enter to continue: ");
+        } while(verse.Length > 0);
 
         Reference reference = new(book, chapter, verses.First().Key, verses.Count - 1);
         Scripture scripture = new(reference, verses);
