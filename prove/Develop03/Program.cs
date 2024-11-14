@@ -5,7 +5,7 @@ using System.Text.Json;
 class Program {
 
     public static List<Scripture> scriptures = [];
-    public static string fileName = "scriptures.json";
+    public static string saveFile = "scriptures.json";
     public static readonly JsonSerializerOptions serializationOptions = new() { WriteIndented = true, IncludeFields = true };
 
     static void Main(string[] args) {
@@ -16,16 +16,16 @@ class Program {
     }
 
     static void LoadSciptures() {
-        if (!File.Exists(fileName)) {
+        if (!File.Exists(saveFile)) {
             SaveScriptures();
         }
-        string jsonString = File.ReadAllText(fileName);
+        string jsonString = File.ReadAllText(saveFile);
         scriptures = JsonSerializer.Deserialize<List<Scripture>>(jsonString, serializationOptions);
     }
 
     static void SaveScriptures() {
         string jsonString = JsonSerializer.Serialize(scriptures, serializationOptions);
-        File.WriteAllText(fileName, jsonString);
+        File.WriteAllText(saveFile, jsonString);
     }
 
     static void Memorize(Scripture scripture) {
@@ -84,3 +84,12 @@ class Program {
         Environment.Exit(0);
     }
 }
+
+/*
+Exceeded Requirements:
+ - Save scriptures to JSON file
+ - Added a whole menu of options
+ - Pick random or select specific scripture to memorize
+ - List all the scriptures
+ - Add your own scriptures
+*/

@@ -1,7 +1,7 @@
 [
   {
     "reference": {
-      "StartVerse": 36,
+      "startVerse": 36,
       "book": "D\u0026C",
       "chapter": 6,
       "verseRange": 0
@@ -43,7 +43,7 @@
   },
   {
     "reference": {
-      "StartVerse": 5,
+      "startVerse": 5,
       "book": "Proverbs",
       "chapter": 3,
       "verseRange": 1
@@ -138,7 +138,7 @@
   },
   {
     "reference": {
-      "StartVerse": 18,
+      "startVerse": 18,
       "book": "Moses",
       "chapter": 7,
       "verseRange": 0
@@ -231,7 +231,7 @@
   },
   {
     "reference": {
-      "StartVerse": 3,
+      "startVerse": 3,
       "book": "Psalm",
       "chapter": 24,
       "verseRange": 1
@@ -359,7 +359,7 @@
   },
   {
     "reference": {
-      "StartVerse": 15,
+      "startVerse": 15,
       "book": "Joshua",
       "chapter": 24,
       "verseRange": 0
