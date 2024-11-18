@@ -5,7 +5,7 @@ using System.Text.Json;
 class Program {
 
     public static List<Scripture> scriptures = [];
-    public static string saveFile = "scriptures.json";
+    public static readonly string saveFile = "scriptures.json";
     public static readonly JsonSerializerOptions serializationOptions = new() { WriteIndented = true, IncludeFields = true };
 
     static void Main(string[] args) {
