@@ -2,7 +2,7 @@ namespace Develop04.Activities;
 using CommonUtils;
 using Develop04.Animations;
 
-public abstract class Activity(string name, string description) {
+abstract class Activity(string name, string description) {
     private readonly string name = name;
     private readonly string description = description;
     private int duration;
@@ -10,6 +10,10 @@ public abstract class Activity(string name, string description) {
     
     protected bool IsOver() {
         return start.Ticks < DateTime.Now.Ticks - (duration * TimeSpan.TicksPerSecond);
+    }
+
+    protected void SetStart() {
+        start = DateTime.Now;
     }
 
     public void Begin() {
@@ -23,13 +27,13 @@ public abstract class Activity(string name, string description) {
         Console.WriteLine("Get Ready...");
         new LoadingAnimation().Play(3);
 
-        start = DateTime.Now;
         StartActivity();
+        Finish();
     }
 
     protected abstract void StartActivity();
 
-    protected void Finish() {
+    private void Finish() {
         Console.WriteLine();
         Console.WriteLine("Well done!");
         new LoadingAnimation().Play(2);

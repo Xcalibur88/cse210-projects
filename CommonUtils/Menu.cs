@@ -22,7 +22,7 @@ public class Menu {
         Console.WriteLine("Please select one of the following options");
 
         foreach (KeyValuePair<string, Action> pair in options) {
-            Console.WriteLine(pair.Key);
+            Console.WriteLine($" {pair.Key}");
         }
 
         int index = ConsoleUtils.PromptInput<int>("What would you like to do? ", (i) => i > 0 && i <= options.Count, "Out of bound option index! Please try again.");

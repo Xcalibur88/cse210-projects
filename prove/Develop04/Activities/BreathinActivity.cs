@@ -2,20 +2,21 @@ using Develop04.Animations;
 
 namespace Develop04.Activities;
 
-public class BreathingActivity() : Activity("Breathing Activity", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.") {
+class BreathingActivity() : Activity("Breathing Activity", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.") {
 
     protected override void StartActivity() {
-        CountdownAnimation countdown = new(5);
+        CountdownAnimation countdownIn = new(4);
+        CountdownAnimation countdownOut = new(5);
+        SetStart();
         while(!IsOver()) {
             Console.WriteLine();
             Console.Write("Breath in...");
-            countdown.Play();
+            countdownIn.Play();
             Console.WriteLine();
             Console.Write("Breath out...");
-            countdown.Play();
+            countdownOut.Play();
             Console.WriteLine();
         }
-        Finish();
     }
     
 }
