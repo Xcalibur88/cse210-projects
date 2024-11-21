@@ -1,6 +1,8 @@
 namespace Develop04.Activities;
-using CommonUtils;
+using System.Text.Json;
 using Develop04.Animations;
+using CommonUtils;
+
 
 abstract class Activity(string name, string description) {
     private readonly string name = name;
@@ -40,5 +42,29 @@ abstract class Activity(string name, string description) {
         Console.WriteLine();
         Console.WriteLine($"You have completed another {duration} seconds of the {name}.");
         new LoadingAnimation().Play(6);
+        Log();
+    }
+
+    private void Log() {
+        Dictionary<string, int> stats = GetLogs();
+        if (!stats.TryAdd(name, duration)) {
+            stats[name] += duration;
+        }
+        string jsonString = JsonSerializer.Serialize(stats, serializationOptions);
+        File.WriteAllText(saveFile, jsonString);
+    }
+
+
+    private static readonly JsonSerializerOptions serializationOptions = new() { WriteIndented = true, IncludeFields = true };
+    private static readonly string saveFile = "stats.json"; 
+    public static Dictionary<string, int> GetLogs() {
+        Dictionary<string, int> stats;
+        if (!File.Exists(saveFile)) {
+            stats = [];
+        } else {
+            string jsonString = File.ReadAllText("stats.json");
+            stats = JsonSerializer.Deserialize<Dictionary<string, int>>(jsonString, serializationOptions);
+        }
+        return stats;
     }
 }
