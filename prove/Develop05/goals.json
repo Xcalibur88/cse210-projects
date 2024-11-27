@@ -1,0 +1,33 @@
+{
+  "Goals": [
+    {
+      "type": "SimpleGoal",
+      "completed": false,
+      "Name": "Bare Testimony",
+      "Description": "Share testimony in scarament meeting next sunday",
+      "pointValue": 5
+    },
+    {
+      "type": "EternalGoal",
+      "Name": "Give Thanks",
+      "Description": "List some things you are grateful for",
+      "pointValue": 10
+    },
+    {
+      "type": "ChecklistGoal",
+      "goalCompletions": 10,
+      "currentCompletions": 1,
+      "Name": "Run 10 Miles",
+      "Description": "Run a mile every everyday",
+      "pointValue": 50
+    },
+    {
+      "type": "SimpleGoal",
+      "completed": true,
+      "Name": "Write Talk",
+      "Description": "Write a talk for next sunday",
+      "pointValue": 75
+    }
+  ],
+  "TotalPoints": 75
+}

@@ -4,6 +4,8 @@ public class Menu {
 
     private readonly Dictionary<string, Action> options;
     private readonly bool clear;
+    private readonly string title = "Please select one of the following options";
+    private readonly string prompt = "What would you like to do?";
 
     public Menu(bool clear, params (string, Action)[] options) {
         this.clear = clear;
@@ -15,17 +17,22 @@ public class Menu {
         }
     }
 
+    public Menu(string title, string prompt, bool clear, params (string, Action)[] options) : this(false, options) {
+        this.title = title;
+        this.prompt = prompt;
+    }
+
     public Menu(params (string, Action)[] options) : this(false, options) {}
 
     public void Open(bool rePrompt) {
         Space();
-        Console.WriteLine("Please select one of the following options");
+        Console.WriteLine(title);
 
         foreach (KeyValuePair<string, Action> pair in options) {
             Console.WriteLine($" {pair.Key}");
         }
 
-        int index = ConsoleUtils.PromptInput<int>("What would you like to do? ", (i) => i > 0 && i <= options.Count, "Out of bound option index! Please try again.");
+        int index = ConsoleUtils.PromptInput<int>($"{prompt} ", (i) => i > 0 && i <= options.Count, "Out of bound option index! Please try again.");
         Action selection = options.ElementAt(index - 1).Value;
 
         Space();
