@@ -16,7 +16,7 @@
     {
       "type": "ChecklistGoal",
       "goalCompletions": 10,
-      "currentCompletions": 1,
+      "currentCompletions": 2,
       "Name": "Run 10 Miles",
       "Description": "Run a mile every everyday",
       "pointValue": 50
@@ -27,7 +27,13 @@
       "Name": "Write Talk",
       "Description": "Write a talk for next sunday",
       "pointValue": 75
+    },
+    {
+      "type": "NegativeGoal",
+      "Name": "No Sugar",
+      "Description": "Do not eat anything with sugar in it",
+      "pointValue": 5
     }
   ],
-  "TotalPoints": 75
+  "TotalPoints": 185
 }

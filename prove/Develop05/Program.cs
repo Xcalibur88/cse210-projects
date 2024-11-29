@@ -24,10 +24,10 @@ class Program {
         }
         Menu goalOptions = new ("The types of goals are:", "Which type of goal would you like to create?", false,
                              ("Simple Goal", () => CreateGoal(typeof(SimpleGoal))),
+                             ("Negative Goal", () => CreateGoal(typeof(NegativeGoal))),
                              ("Eternal Goal", () => CreateGoal(typeof(EternalGoal))),
                              ("Checklist Goal", () => CreateGoal(typeof(ChecklistGoal))));
         goalOptions.Open(false);
-
     }
 
     static void ListGoals() {
@@ -35,7 +35,7 @@ class Program {
         if (goals.Count <= 0) {
             Console.WriteLine("You have not made any goals yet!");
         } else {
-            foreach (Goal goal in goals) {
+            foreach (Goal goal in goals.OrderBy(g => g.IsCompleted())) {
                 Console.WriteLine($" {goal.GetRendered()}");
             }
         }
@@ -50,7 +50,12 @@ class Program {
         goalMenu.Open(false);
         Save();
 
-        Console.WriteLine($"Congradulations! You have earned {points - previousPoints} points!");
+        int pointDifference = points - previousPoints;
+        if (pointDifference > 0) {
+            Console.WriteLine($"Oh no! You made a mistake and lost {pointDifference} points. Keep trying!");
+        } else {
+            Console.WriteLine($"Congradulations! You have earned {pointDifference} points!");   
+        }
         Console.WriteLine($"You now have {points} points.");
         Console.WriteLine();
         ConsoleUtils.PromptInput<string>("Press enter to continue...");

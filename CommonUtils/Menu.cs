@@ -4,25 +4,19 @@ public class Menu {
 
     private readonly Dictionary<string, Action> options;
     private readonly bool clear;
-    private readonly string title = "Please select one of the following options";
-    private readonly string prompt = "What would you like to do?";
+    private readonly string title;
+    private readonly string prompt;
 
-    public Menu(bool clear, params (string, Action)[] options) {
+    public Menu(string title, string prompt, bool clear, params (string key, Action action)[] options) {
         this.clear = clear;
-        this.options = [];
-        int index = 1;
-        foreach (var (key, action) in options) {
-            this.options[index + ". " + key] = action;
-            index++;
-        }
-    }
-
-    public Menu(string title, string prompt, bool clear, params (string, Action)[] options) : this(false, options) {
         this.title = title;
         this.prompt = prompt;
+        this.options = options.ToDictionary(option => $"{Array.IndexOf(options, option) + 1}. {option.key}", option => option.action);
     }
 
-    public Menu(params (string, Action)[] options) : this(false, options) {}
+    public Menu(bool clear, params (string key, Action action)[] options) : this("Please select one of the following options", "What would you like to do?", clear, options) {}
+
+    public Menu(params (string key, Action action)[] options) : this(false, options) {}
 
     public void Open(bool rePrompt) {
         Space();

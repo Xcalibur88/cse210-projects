@@ -15,6 +15,7 @@ class GoalConverter : JsonConverter<Goal> {
         var type = typeProp.GetString();
         return type switch {
             "SimpleGoal" => JsonSerializer.Deserialize<SimpleGoal>(root.GetRawText(), options),
+            "NegativeGoal" => JsonSerializer.Deserialize<EternalGoal>(root.GetRawText(), options),
             "ChecklistGoal" => JsonSerializer.Deserialize<ChecklistGoal>(root.GetRawText(), options),
             "EternalGoal" => JsonSerializer.Deserialize<EternalGoal>(root.GetRawText(), options),
             _ => throw new JsonException($"Unknown goal type: {type}")

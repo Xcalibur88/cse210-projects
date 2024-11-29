@@ -28,6 +28,10 @@ abstract class Goal(string name, string description, int pointValue) {
         Program.points += pointValue;
     }
 
+    protected void RemovePoints(int pointValue) {
+        Program.points -= pointValue;
+    }
+
     public static Goal CreateGoal(Type goalType) {
         if (!typeof(Goal).IsAssignableFrom(goalType))
             throw new InvalidOperationException($"The type {goalType.Name} is not a valid Goal type.");
