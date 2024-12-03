@@ -1,24 +1,24 @@
 using System.Text.Json.Serialization;
 using Develop05.Goals;
 
-class ChecklistGoal(string name, string description, int pointValue, int goalCompletions) : Goal(name, description, pointValue) {
+class ChecklistGoal(string name, string description, int pointValue, int targetCompletions) : Goal(name, description, pointValue) {
     [JsonInclude]
-    private readonly int goalCompletions = goalCompletions;
+    private readonly int targetCompletions = targetCompletions;
     [JsonInclude]
     private int currentCompletions;
 
     public override bool IsCompleted() {
-        return currentCompletions >= goalCompletions;
+        return currentCompletions >= targetCompletions;
     }
 
     public override string GetRendered() {
-        return $"{(IsCompleted() ? "[x]" : "[ ]")} {Name} ({Description}) -- Currently Completed {currentCompletions}/{goalCompletions}";
+        return $"{(IsCompleted() ? "[x]" : "[ ]")} {Name} ({Description}) -- Currently Completed {currentCompletions}/{targetCompletions}";
     }
 
     public override void Record() {
         currentCompletions++;
         AddPoints();
-        if (currentCompletions == goalCompletions) {
+        if (currentCompletions == targetCompletions) {
             AddPoints(pointValue * 10);
         }
     }

@@ -84,3 +84,7 @@ class Program {
         Environment.Exit(0);
     }
 }
+
+/* Exceeded Requirements:
+- Added a negative goal type
+*/
